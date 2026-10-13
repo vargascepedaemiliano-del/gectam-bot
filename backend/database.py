@@ -11,10 +11,13 @@ Contiene 3 tablas:
 No depende de la API de Claude para nada de lo que hace aquí.
 """
 
+import os
 import sqlite3
 from datetime import datetime
 
-DB_NAME = "gectam.db"
+# Ruta absoluta: siempre queda junto a este archivo (carpeta backend),
+# sin importar desde dónde se ejecute el programa.
+DB_NAME = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gectam.db")
 
 
 def get_connection():
@@ -125,6 +128,103 @@ def guardar_cotizacion(session_id: str, cliente_nombre: str, cliente_contacto: s
     )
     conn.commit()
     conn.close()
+
+
+# ---------------------------------------------------------------------------
+# Funciones para el panel de administrador
+# ---------------------------------------------------------------------------
+
+def estadisticas():
+    """Números generales para la pantalla de resumen del administrador."""
+    conn = get_connection()
+    sesiones = conn.execute("SELECT COUNT(DISTINCT session_id) FROM conversaciones").fetchone()[0]
+    mensajes = conn.execute("SELECT COUNT(*) FROM conversaciones WHERE remitente = 'cliente'").fetchone()[0]
+    cot = conn.execute("SELECT COUNT(*), COALESCE(SUM(total), 0) FROM cotizaciones").fetchone()
+    conn.close()
+    return {
+        "sesiones": sesiones,
+        "mensajes_cliente": mensajes,
+        "cotizaciones": cot[0],
+        "total_cotizado": cot[1],
+    }
+
+
+def listar_sesiones(limite: int = 200):
+    """Una fila por conversación: cuándo empezó, cuántos mensajes y si generó cotización."""
+    conn = get_connection()
+    filas = conn.execute(
+        """
+        SELECT c.session_id,
+               MIN(c.fecha) AS inicio,
+               MAX(c.fecha) AS ultimo,
+               COUNT(*) AS mensajes,
+               (SELECT mensaje FROM conversaciones x
+                 WHERE x.session_id = c.session_id AND x.remitente = 'cliente'
+                 ORDER BY x.id ASC LIMIT 1) AS primer_mensaje,
+               (SELECT COUNT(*) FROM cotizaciones q WHERE q.session_id = c.session_id) AS cotizaciones
+        FROM conversaciones c
+        GROUP BY c.session_id
+        ORDER BY ultimo DESC
+        LIMIT ?
+        """,
+        (limite,),
+    ).fetchall()
+    conn.close()
+    return [dict(f) for f in filas]
+
+
+def mensajes_de_sesion(session_id: str):
+    """Todos los mensajes de una conversación, en orden."""
+    conn = get_connection()
+    filas = conn.execute(
+        "SELECT remitente, mensaje, fecha FROM conversaciones WHERE session_id = ? ORDER BY id ASC",
+        (session_id,),
+    ).fetchall()
+    conn.close()
+    return [dict(f) for f in filas]
+
+
+def listar_cotizaciones(limite: int = 200):
+    """Las cotizaciones generadas, de la más reciente a la más antigua."""
+    conn = get_connection()
+    filas = conn.execute("SELECT * FROM cotizaciones ORDER BY id DESC LIMIT ?", (limite,)).fetchall()
+    conn.close()
+    return [dict(f) for f in filas]
+
+
+def crear_servicio(nombre, descripcion, precio, tipo_precio, cotizable_automatico):
+    conn = get_connection()
+    cur = conn.execute(
+        "INSERT INTO servicios (nombre, descripcion, precio, tipo_precio, cotizable_automatico) VALUES (?, ?, ?, ?, ?)",
+        (nombre, descripcion, precio, tipo_precio, 1 if cotizable_automatico else 0),
+    )
+    conn.commit()
+    nuevo_id = cur.lastrowid
+    conn.close()
+    return nuevo_id
+
+
+def actualizar_servicio(servicio_id, nombre, descripcion, precio, tipo_precio, cotizable_automatico):
+    """Devuelve True si el servicio existía."""
+    conn = get_connection()
+    cur = conn.execute(
+        "UPDATE servicios SET nombre=?, descripcion=?, precio=?, tipo_precio=?, cotizable_automatico=? WHERE id=?",
+        (nombre, descripcion, precio, tipo_precio, 1 if cotizable_automatico else 0, servicio_id),
+    )
+    conn.commit()
+    ok = cur.rowcount > 0
+    conn.close()
+    return ok
+
+
+def borrar_servicio(servicio_id):
+    """Devuelve True si el servicio existía."""
+    conn = get_connection()
+    cur = conn.execute("DELETE FROM servicios WHERE id = ?", (servicio_id,))
+    conn.commit()
+    ok = cur.rowcount > 0
+    conn.close()
+    return ok
 
 
 if __name__ == "__main__":
