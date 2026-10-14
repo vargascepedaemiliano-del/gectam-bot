@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GECTAM | Servicios técnicos con cotización inmediata</title>
+<meta name="description" content="Servicios técnicos y de mantenimiento. Cotiza en minutos con nuestro asistente, a cualquier hora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="GECTAM, inicio">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="7" fill="#0d2b33"/>
+        <path d="M21.5 11.2A7.5 7.5 0 1 0 21.5 20.8H16v-3.4h6.2" fill="none" stroke="#f26b1d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      GECTAM
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+      <button class="btn btn-senal" type="button" data-open-chat>Cotizar</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1>Cotiza tu servicio en un chat, a cualquier hora.</h1>
+        <p class="lead">Dinos qué necesitas y nuestro asistente arma tu cotización con los precios de nuestro catálogo. Si tu caso es especial, lo atiende una persona de nuestro equipo.</p>
+        <div class="acciones">
+          <button class="btn btn-senal" type="button" data-open-chat>Cotizar en el chat</button>
+          <a class="btn" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+
+      <div class="hoja" role="img" aria-label="Ejemplo de una conversación en la que el asistente arma una cotización">
+        <div class="hoja-barra"><span>Asistente de GECTAM</span><span>Ejemplo</span></div>
+        <div class="hoja-cuerpo">
+          <div class="bur bur-u sec">Necesito mantenimiento para 2 equipos.</div>
+          <div class="bur bur-b sec">Con gusto. El mantenimiento preventivo cuesta $850 por equipo. ¿Te lo cotizo para 2?</div>
+          <div class="bur bur-u sec">Sí, por favor.</div>
+          <div class="bur bur-b sec">Listo, esta es tu cotización:
+            <div class="desglose"><span>2 × Mantenimiento preventivo</span><span>$1,700</span></div>
+          </div>
+        </div>
+        <div class="total sec"><span>Total</span><strong>$1,700 MXN</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="servicios">
+    <div class="wrap">
+      <div class="cab">
+        <h2>Servicios y precios</h2>
+        <p>Estos son los servicios que el asistente puede cotizar al momento.</p>
+      </div>
+      <ul class="precios">
+        <li>
+          <div><h3>Instalación de equipos</h3><p>Instalación y puesta en marcha con revisión de funcionamiento al terminar.</p></div>
+          <div class="precio">$1,200<small>por equipo</small></div>
+        </li>
+        <li>
+          <div><h3>Mantenimiento preventivo</h3><p>Limpieza, ajustes y revisión general para evitar fallas antes de que ocurran.</p></div>
+          <div class="precio">$850<small>por equipo</small></div>
+        </li>
+        <li>
+          <div><h3>Diagnóstico y reparación</h3><p>Encontramos la falla y te damos el costo de la reparación antes de empezar.</p></div>
+          <div class="precio">Desde $600<small>el precio final depende de la falla</small></div>
+        </li>
+        <li>
+          <div><h3>Paquete anual de mantenimiento</h3><p>Cuatro visitas al año con prioridad de atención y descuento en refacciones.</p></div>
+          <div class="precio">$2,900<small>por equipo al año</small></div>
+        </li>
+        <li>
+          <div><h3>Proyectos especiales</h3><p>Instalaciones grandes o trabajos fuera de catálogo. Un especialista revisa tu caso.</p></div>
+          <div class="precio">A cotizar<small>con una persona del equipo</small></div>
+        </li>
+      </ul>
+      <p class="nota">Servicios y precios de ejemplo. Se sustituyen por el catálogo real de GECTAM.</p>
+    </div>
+  </section>
+
+  <section class="bloque alt" id="como-funciona">
+    <div class="wrap">
+      <div class="cab">
+        <h2>De la duda a la cotización en tres pasos</h2>
+      </div>
+      <ol class="pasos">
+        <li><h3>Cuéntanos qué necesitas</h3><p>Escribe en el chat con tus palabras. No hay formularios largos.</p></li>
+        <li><h3>Revisa tu cotización</h3><p>El asistente suma los servicios con precios del catálogo y te muestra el total.</p></li>
+        <li><h3>Te contactamos</h3><p>Una persona de GECTAM confirma los detalles contigo y agenda el servicio.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="bloque" id="nosotros">
+    <div class="wrap">
+      <div class="cab">
+        <h2>Lo que puedes esperar de nosotros</h2>
+      </div>
+      <dl class="hechos">
+        <div><dt>Precios claros</dt><dd>La cotización sale de nuestro catálogo, no de una estimación al aire.</dd></div>
+        <div><dt>Respuesta a cualquier hora</dt><dd>El asistente atiende también de noche y en fin de semana.</dd></div>
+        <div><dt>Personas para lo especial</dt><dd>Los trabajos que necesitan revisión los atiende nuestro equipo.</dd></div>
+        <div><dt>Seguimiento</dt><dd>Cada cotización queda registrada para que no se pierda tu solicitud.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bloque" id="contacto">
+    <div class="wrap contacto">
+      <div>
+        <div class="cab" style="margin-bottom:28px"><h2>Contacto</h2></div>
+        <dl class="datos">
+          <div><dt>Teléfono</dt><dd>(834) 000 0000</dd></div>
+          <div><dt>Correo</dt><dd>contacto@gectam.example</dd></div>
+          <div><dt>Dirección</dt><dd>Calle Ejemplo 123, Ciudad Victoria, Tamaulipas</dd></div>
+          <div><dt>Horario</dt><dd>Lunes a viernes, 9:00 a 18:00. El chat atiende todo el día.</dd></div>
+        </dl>
+        <p class="nota">Datos de contacto de ejemplo.</p>
+      </div>
+      <div class="caja-chat">
+        <h3>¿Prefieres cotizar ahora?</h3>
+        <p>Abre el chat y en unos minutos tienes tu cotización.</p>
+        <button class="btn btn-senal" type="button" data-open-chat>Abrir el chat</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 GECTAM. Sitio de ejemplo.</span>
+    <a href="admin.html">Acceso administrador</a>
+  </div>
+</footer>
+
+<script src="chat-widget.js" data-backend="https://gectam-bot.onrender.com" defer></script>
+</body>
+</html>

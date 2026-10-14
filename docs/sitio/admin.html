@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de administrador | GECTAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body{background-image:none;font-size:16px}
+  .ad{max-width:1100px;margin:0 auto;padding:24px}
+  .ad-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+  .ad-top h1{font-size:1.7rem}
+  .tabs{display:flex;gap:6px;border-bottom:2px solid var(--tinta);margin-bottom:22px;flex-wrap:wrap}
+  .tab{font:inherit;font-weight:600;background:transparent;border:0;padding:10px 16px;cursor:pointer;color:var(--texto-suave);border-radius:8px 8px 0 0}
+  .tab[aria-selected="true"]{background:var(--tinta);color:#fff}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+  .stat{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:18px}
+  .stat strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;line-height:1.1}
+  .stat span{color:var(--texto-suave);font-size:.95rem}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--linea);border-radius:12px;overflow:hidden}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--linea);vertical-align:top;font-size:.95rem}
+  th{background:#e9eeec;font-weight:700}
+  tr.click{cursor:pointer}
+  tr.click:hover td{background:#f1f5f3}
+  .scroll{overflow-x:auto}
+  .login{max-width:380px;margin:12vh auto;background:#fff;border:2px solid var(--tinta);border-radius:14px;padding:28px;box-shadow:8px 8px 0 var(--tinta)}
+  .login label,.f label{display:block;font-weight:600;margin:14px 0 6px}
+  input[type=text],input[type=password],input[type=number],select{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--linea);border-radius:8px;background:#fff;color:var(--tinta)}
+  .err{color:#b3261e;margin-top:12px;font-weight:600;min-height:1.4em}
+  .hilo{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:9px;margin-top:14px}
+  .m{max-width:78%;padding:9px 13px;border-radius:12px;white-space:pre-wrap;font-size:.95rem}
+  .m small{display:block;color:inherit;opacity:.65;font-size:.78rem;margin-top:4px}
+  .m.cliente{align-self:flex-end;background:var(--tinta);color:#fff}
+  .m.bot{align-self:flex-start;background:var(--papel);border:1px solid var(--linea)}
+  .f{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:18px;margin-bottom:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 16px;align-items:end}
+  .f .acc{display:flex;gap:10px;grid-column:1/-1;margin-top:14px;flex-wrap:wrap}
+  .chk{display:flex;align-items:center;gap:8px;margin-top:14px}
+  .chk input{width:auto}
+  .mini{font:inherit;font-weight:600;font-size:.88rem;padding:5px 11px;border-radius:7px;border:1px solid var(--tinta);background:#fff;cursor:pointer;color:var(--tinta)}
+  .mini:hover{background:var(--tinta);color:#fff}
+  .mini.rojo{border-color:#b3261e;color:#b3261e}.mini.rojo:hover{background:#b3261e;color:#fff}
+  .vacio{padding:28px;text-align:center;color:var(--texto-suave);background:#fff;border:1px dashed var(--linea);border-radius:12px}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.8rem;font-weight:600;background:#e9eeec}
+  .pill.si{background:#d6efe0;color:#14532d}
+  pre.det{margin:0;white-space:pre-wrap;font-family:inherit;font-size:.9rem;color:var(--texto-suave)}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- Pantalla de acceso -->
+<div id="login" class="login">
+  <h1 style="font-size:1.6rem">Acceso administrador</h1>
+  <form id="f-login">
+    <label for="pw">Contraseña</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <div class="err" id="err" role="alert"></div>
+    <button class="btn btn-senal" type="submit" style="margin-top:8px;width:100%">Entrar</button>
+  </form>
+  <p class="nota"><a href="index.html">Volver al sitio</a></p>
+</div>
+
+<!-- Panel -->
+<div id="panel" class="ad" hidden>
+  <div class="ad-top">
+    <h1>Panel de administrador</h1>
+    <div><a class="btn" href="index.html" style="padding:8px 14px">Ver sitio</a>
+      <button class="btn" id="salir" type="button" style="padding:8px 14px">Salir</button></div>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-t="resumen" aria-selected="true">Resumen</button>
+    <button class="tab" role="tab" data-t="conv" aria-selected="false">Conversaciones</button>
+    <button class="tab" role="tab" data-t="cot" aria-selected="false">Cotizaciones</button>
+    <button class="tab" role="tab" data-t="cat" aria-selected="false">Catálogo</button>
+  </div>
+  <div id="vista"></div>
+</div>
+
+<script>
+  // Dirección del backend (la misma que usa el chat)
+  const BACKEND = "https://gectam-bot.onrender.com";
+
+  const $ = (s) => document.querySelector(s);
+  let pw = "";
+  try { pw = sessionStorage.getItem("gectam_admin") || ""; } catch (e) {}
+
+  // Convierte texto en HTML seguro (evita que un mensaje de un cliente meta código)
+  const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const dinero = (n) => n == null ? "—" : "$" + Number(n).toLocaleString("es-MX", {minimumFractionDigits:2, maximumFractionDigits:2});
+  const fecha = (iso) => { const d = new Date(iso); return isNaN(d) ? esc(iso) : d.toLocaleString("es-MX", {dateStyle:"short", timeStyle:"short"}); };
+
+  async function api(ruta, opciones = {}) {
+    const res = await fetch(BACKEND + ruta, {
+      ...opciones,
+      headers: { "Content-Type": "application/json", "X-Admin-Password": pw, ...(opciones.headers || {}) },
+    });
+    if (res.status === 401) { cerrarSesion(); throw new Error("Contraseña incorrecta."); }
+    if (!res.ok) {
+      let msg = "Error " + res.status;
+      try { const j = await res.json(); if (j.detail) msg = typeof j.detail === "string" ? j.detail : "Datos inválidos."; } catch (e) {}
+      throw new Error(msg);
+    }
+    return res.json();
+  }
+
+  function cerrarSesion() {
+    pw = ""; try { sessionStorage.removeItem("gectam_admin"); } catch (e) {}
+    $("#panel").hidden = true; $("#login").hidden = false;
+  }
+
+  $("#f-login").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    pw = $("#pw").value;
+    $("#err").textContent = "Verificando… si el servidor estaba dormido puede tardar hasta un minuto.";
+    try {
+      await api("/admin/resumen");
+      try { sessionStorage.setItem("gectam_admin", pw); } catch (e) {}
+      $("#err").textContent = "";
+      entrar();
+    } catch (err) {
+      $("#err").textContent = err.message === "Failed to fetch" ? "No se pudo conectar con el servidor." : err.message;
+    }
+  });
+
+  $("#salir").addEventListener("click", cerrarSesion);
+
+  document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((x) => x.setAttribute("aria-selected", x === b));
+    mostrar(b.dataset.t);
+  }));
+
+  function entrar() { $("#login").hidden = true; $("#panel").hidden = false; mostrar("resumen"); }
+
+  async function mostrar(t) {
+    const v = $("#vista");
+    v.innerHTML = '<p class="vacio">Cargando…</p>';
+    try {
+      if (t === "resumen") await vistaResumen(v);
+      if (t === "conv") await vistaConversaciones(v);
+      if (t === "cot") await vistaCotizaciones(v);
+      if (t === "cat") await vistaCatalogo(v);
+    } catch (err) { v.innerHTML = '<p class="vacio">' + esc(err.message) + "</p>"; }
+  }
+
+  async function vistaResumen(v) {
+    const r = await api("/admin/resumen");
+    v.innerHTML = '<div class="stats">' +
+      '<div class="stat"><strong>' + r.sesiones + '</strong><span>Conversaciones</span></div>' +
+      '<div class="stat"><strong>' + r.mensajes_cliente + '</strong><span>Mensajes de clientes</span></div>' +
+      '<div class="stat"><strong>' + r.cotizaciones + '</strong><span>Cotizaciones generadas</span></div>' +
+      '<div class="stat"><strong>' + dinero(r.total_cotizado) + '</strong><span>Total cotizado (MXN)</span></div></div>';
+  }
+
+  async function vistaConversaciones(v, abierta) {
+    if (abierta) {
+      const m = await api("/admin/sesiones/" + encodeURIComponent(abierta));
+      v.innerHTML = '<button class="mini" id="atras">Volver a la lista</button>' +
+        '<p class="nota">Conversación ' + esc(abierta) + '</p><div class="hilo">' +
+        m.map((x) => '<div class="m ' + esc(x.remitente) + '">' + esc(x.mensaje) + '<small>' + (x.remitente === "cliente" ? "Cliente" : "Asistente") + " · " + fecha(x.fecha) + "</small></div>").join("") + "</div>";
+      $("#atras").onclick = () => vistaConversaciones(v);
+      return;
+    }
+    const s = await api("/admin/sesiones");
+    if (!s.length) { v.innerHTML = '<p class="vacio">Todavía no hay conversaciones. Aparecerán aquí cuando los clientes usen el chat.</p>'; return; }
+    v.innerHTML = '<div class="scroll"><table><thead><tr><th>Inicio</th><th>Último mensaje</th><th>Mensajes</th><th>Empezó con</th><th>Cotización</th></tr></thead><tbody>' +
+      s.map((x) => '<tr class="click" data-id="' + esc(x.session_id) + '"><td>' + fecha(x.inicio) + "</td><td>" + fecha(x.ultimo) + "</td><td>" + x.mensajes + "</td><td>" + esc((x.primer_mensaje || "").slice(0, 70)) + '</td><td>' + (x.cotizaciones ? '<span class="pill si">Sí</span>' : '<span class="pill">No</span>') + "</td></tr>").join("") +
+      "</tbody></table></div><p class=\"nota\">Haz clic en una fila para ver la conversación completa.</p>";
+    v.querySelectorAll("tr.click").forEach((tr) => tr.addEventListener("click", () => vistaConversaciones(v, tr.dataset.id)));
+  }
+
+  async function vistaCotizaciones(v) {
+    const c = await api("/admin/cotizaciones");
+    if (!c.length) { v.innerHTML = '<p class="vacio">Todavía no hay cotizaciones. Se guardan cuando un cliente confirma su solicitud en el chat.</p>'; return; }
+    v.innerHTML = '<div class="scroll"><table><thead><tr><th>Fecha</th><th>Cliente</th><th>Contacto</th><th>Detalle</th><th>Total</th><th></th></tr></thead><tbody>' +
+      c.map((x) => "<tr><td>" + fecha(x.fecha) + "</td><td>" + esc(x.cliente_nombre) + "</td><td>" + esc(x.cliente_contacto) + "</td><td><pre class=\"det\">" + esc(x.resumen) + "</pre></td><td><strong>" + dinero(x.total) + '</strong></td><td><button class="mini" data-s="' + esc(x.session_id) + '">Ver chat</button></td></tr>').join("") +
+      "</tbody></table></div>";
+    v.querySelectorAll("button[data-s]").forEach((b) => b.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach((x) => x.setAttribute("aria-selected", x.dataset.t === "conv"));
+      vistaConversaciones(v, b.dataset.s).catch((e) => (v.innerHTML = '<p class="vacio">' + esc(e.message) + "</p>"));
+    }));
+  }
+
+  async function vistaCatalogo(v) {
+    const s = await api("/admin/servicios");
+    v.innerHTML =
+      '<form class="f" id="fs"><input type="hidden" id="sid">' +
+      '<div><label for="sn">Nombre</label><input id="sn" type="text" maxlength="120" required></div>' +
+      '<div><label for="sd">Descripción</label><input id="sd" type="text" maxlength="500"></div>' +
+      '<div><label for="sp">Precio (MXN)</label><input id="sp" type="number" min="0" step="0.01"></div>' +
+      '<div><label for="st">Tipo de precio</label><select id="st"><option value="fijo">Fijo</option><option value="variable">Base, puede variar</option></select></div>' +
+      '<div class="chk"><input id="sa" type="checkbox" checked><label for="sa" style="margin:0">El bot puede cotizarlo solo</label></div>' +
+      '<div class="acc"><button class="btn btn-senal" type="submit" id="guardar">Agregar servicio</button><button class="btn" type="button" id="cancelar" hidden>Cancelar edición</button></div>' +
+      '<div class="err" id="serr" style="grid-column:1/-1"></div></form>' +
+      '<div class="scroll"><table><thead><tr><th>ID</th><th>Servicio</th><th>Precio</th><th>Tipo</th><th>Cotiza el bot</th><th></th></tr></thead><tbody>' +
+      s.map((x) => "<tr><td>" + x.id + "</td><td><strong>" + esc(x.nombre) + "</strong><br><span class=\"nota\" style=\"margin:0\">" + esc(x.descripcion) + "</span></td><td>" + dinero(x.precio) + "</td><td>" + esc(x.tipo_precio) + "</td><td>" + (x.cotizable_automatico ? '<span class="pill si">Sí</span>' : '<span class="pill">No, lo ve una persona</span>') + '</td><td><button class="mini" data-e="' + x.id + '">Editar</button> <button class="mini rojo" data-b="' + x.id + '">Borrar</button></td></tr>').join("") +
+      "</tbody></table></div>";
+
+    const porId = Object.fromEntries(s.map((x) => [x.id, x]));
+    const limpiar = () => { $("#fs").reset(); $("#sid").value = ""; $("#guardar").textContent = "Agregar servicio"; $("#cancelar").hidden = true; };
+    $("#cancelar").onclick = limpiar;
+
+    $("#fs").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const cuerpo = {
+        nombre: $("#sn").value.trim(),
+        descripcion: $("#sd").value.trim(),
+        precio: $("#sp").value === "" ? null : parseFloat($("#sp").value),
+        tipo_precio: $("#st").value,
+        cotizable_automatico: $("#sa").checked,
+      };
+      try {
+        const id = $("#sid").value;
+        await api(id ? "/admin/servicios/" + id : "/admin/servicios", { method: id ? "PUT" : "POST", body: JSON.stringify(cuerpo) });
+        vistaCatalogo(v);
+      } catch (err) { $("#serr").textContent = err.message; }
+    });
+
+    v.querySelectorAll("button[data-e]").forEach((b) => b.addEventListener("click", () => {
+      const x = porId[b.dataset.e];
+      $("#sid").value = x.id; $("#sn").value = x.nombre; $("#sd").value = x.descripcion || "";
+      $("#sp").value = x.precio ?? ""; $("#st").value = x.tipo_precio; $("#sa").checked = !!x.cotizable_automatico;
+      $("#guardar").textContent = "Guardar cambios"; $("#cancelar").hidden = false;
+      $("#sn").focus(); window.scrollTo({ top: 0, behavior: "smooth" });
+    }));
+    v.querySelectorAll("button[data-b]").forEach((b) => b.addEventListener("click", async () => {
+      if (!confirm("¿Borrar este servicio? El bot dejará de ofrecerlo.")) return;
+      try { await api("/admin/servicios/" + b.dataset.b, { method: "DELETE" }); vistaCatalogo(v); }
+      catch (err) { $("#serr").textContent = err.message; }
+    }));
+  }
+
+  if (pw) { api("/admin/resumen").then(entrar).catch(() => {}); }
+</script>
+</body>
+</html>
