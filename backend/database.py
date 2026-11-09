@@ -17,7 +17,12 @@ from datetime import datetime
 
 # Ruta absoluta: siempre queda junto a este archivo (carpeta backend),
 # sin importar desde dónde se ejecute el programa.
-DB_NAME = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gectam.db")
+# Si existe la variable de entorno DB_PATH (por ejemplo /var/data/gectam.db en
+# Render con disco persistente), se usa esa ruta; si no, queda junto al archivo.
+DB_NAME = os.getenv("DB_PATH") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "gectam.db"
+)
+os.makedirs(os.path.dirname(DB_NAME), exist_ok=True)
 
 
 def get_connection():

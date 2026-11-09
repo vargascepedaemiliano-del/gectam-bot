@@ -63,6 +63,7 @@ REGLAS ESTRICTAS
 - Si no sabes algo de la empresa (horarios, ubicación, políticas), dilo con honestidad en lugar de adivinar.
 - No pidas más datos personales de los necesarios (solo nombre y contacto).
 - Responde solo sobre temas de GECTAM y sus servicios; si preguntan otra cosa, redirige amablemente.
+- Escribe en texto plano: no uses asteriscos, almohadillas ni otro formato markdown. Para listas usa un guion al inicio de cada línea. Sé breve.
 """
 
 
