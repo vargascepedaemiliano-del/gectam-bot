@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GECTAM | Servicios técnicos con cotización inmediata</title>
-<meta name="description" content="Servicios técnicos y de mantenimiento. Cotiza en minutos con nuestro asistente, a cualquier hora.">
+<title>GECTAM | Marketing digital en Ciudad Victoria</title>
+<meta name="description" content="Agencia de marketing digital en Ciudad Victoria. Cuéntanos qué necesita tu negocio y te respondemos con precio, a cualquier hora.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Caveat:wght@600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,11 +15,12 @@
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#inicio" aria-label="GECTAM, inicio">
-      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="7" fill="#0d2b33"/>
-        <path d="M21.5 11.2A7.5 7.5 0 1 0 21.5 20.8H16v-3.4h6.2" fill="none" stroke="#f26b1d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg class="logo-mark" viewBox="0 0 44 32" aria-hidden="true">
+        <circle cx="13" cy="16" r="12" fill="#2d4bd8"/>
+        <circle cx="25" cy="16" r="12" fill="#ff5c93" style="mix-blend-mode:multiply"/>
+        <circle cx="33" cy="16" r="9" fill="#ffd43b" style="mix-blend-mode:multiply"/>
       </svg>
-      GECTAM
+      <span>GECTAM</span>
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="#servicios">Servicios</a>
@@ -33,94 +34,114 @@
 
 <main>
   <section class="hero" id="inicio">
-    <div class="wrap">
-      <div>
-        <h1>Cotiza tu servicio en un chat, a cualquier hora.</h1>
-        <p class="lead">Dinos qué necesitas y nuestro asistente arma tu cotización con los precios de nuestro catálogo. Si tu caso es especial, lo atiende una persona de nuestro equipo.</p>
+    <div class="wrap hero-grid">
+      <div class="hero-texto">
+        <h1>Dinos qué necesita tu negocio y te respondemos con precio.</h1>
+        <p class="lead">Somos una agencia de marketing digital de Ciudad Victoria. Cuéntale tu idea a nuestro asistente: en unos minutos tienes una cotización, y si tu caso es especial, te atiende una persona.</p>
         <div class="acciones">
           <button class="btn btn-senal" type="button" data-open-chat>Cotizar en el chat</button>
-          <a class="btn" href="#servicios">Ver servicios</a>
+          <a class="btn" href="#servicios">Ver precios</a>
         </div>
       </div>
 
-      <div class="hoja" role="img" aria-label="Ejemplo de una conversación en la que el asistente arma una cotización">
-        <div class="hoja-barra"><span>Asistente de GECTAM</span><span>Ejemplo</span></div>
-        <div class="hoja-cuerpo">
-          <div class="bur bur-u sec">Necesito mantenimiento para 2 equipos.</div>
-          <div class="bur bur-b sec">Con gusto. El mantenimiento preventivo cuesta $850 por equipo. ¿Te lo cotizo para 2?</div>
-          <div class="bur bur-u sec">Sí, por favor.</div>
-          <div class="bur bur-b sec">Listo, esta es tu cotización:
-            <div class="desglose"><span>2 × Mantenimiento preventivo</span><span>$1,700</span></div>
-          </div>
+      <div class="escena" role="img" aria-label="Ejemplo de una cotización: manejo de redes sociales 3,500 pesos, diseño de logotipo 1,800 pesos, total 5,300 pesos">
+        <svg class="tintas" viewBox="0 0 420 420" aria-hidden="true">
+          <circle cx="150" cy="170" r="140" fill="#2d4bd8"/>
+          <circle cx="270" cy="230" r="130" fill="#ff5c93" style="mix-blend-mode:multiply"/>
+          <circle cx="215" cy="330" r="80" fill="#ffd43b" style="mix-blend-mode:multiply"/>
+        </svg>
+        <div class="puntos" aria-hidden="true"></div>
+
+        <div class="boleta">
+          <span class="cinta" aria-hidden="true"></span>
+          <p class="b-titulo">Cotización</p>
+          <p class="b-para">Para: una panadería del centro <small>(ejemplo)</small></p>
+          <ul class="b-lineas">
+            <li class="sec"><span>Manejo de redes sociales, 1 mes</span><i></i><b>$3,500</b></li>
+            <li class="sec"><span>Diseño de logotipo</span><i></i><b>$1,800</b></li>
+          </ul>
+          <p class="b-total sec"><span>Total</span><strong>$5,300 MXN</strong></p>
         </div>
-        <div class="total sec"><span>Total</span><strong>$1,700 MXN</strong></div>
+
+        <p class="nota-mano" aria-hidden="true">
+          así sale, directo del chat
+          <svg viewBox="0 0 70 50" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6C26 2 52 12 60 40"/><path d="M48 33l12 8 5-14"/></svg>
+        </p>
       </div>
     </div>
   </section>
 
   <section class="bloque" id="servicios">
-    <div class="wrap">
-      <div class="cab">
-        <h2>Servicios y precios</h2>
-        <p>Estos son los servicios que el asistente puede cotizar al momento.</p>
+    <div class="wrap servicios-grid">
+      <div>
+        <h2>Lo que hacemos y cuánto cuesta</h2>
+        <p class="sub">Esto es lo que el asistente puede cotizar al momento.</p>
+
+        <ul class="menu">
+          <li>
+            <div class="m-fila"><h3>Manejo de redes sociales</h3><i></i><b>$3,500<small>al mes</small></b></div>
+            <p>Publicaciones, diseño y respuesta a comentarios en tus cuentas.</p>
+          </li>
+          <li>
+            <div class="m-fila"><h3>Diseño de logotipo</h3><i></i><b>$1,800</b></div>
+            <p>Logo con sus versiones para redes, papelería y fachada.</p>
+          </li>
+          <li>
+            <div class="m-fila"><h3>Página web de una sección</h3><i></i><b>$6,500</b></div>
+            <p>Una página clara con tus datos, tus servicios y un botón de contacto.</p>
+          </li>
+          <li>
+            <div class="m-fila"><h3>Sesión de fotos de producto</h3><i></i><b>$2,200</b></div>
+            <p>Fotografía de hasta 15 productos, lista para redes y catálogo.</p>
+          </li>
+          <li>
+            <div class="m-fila"><h3>Campaña de anuncios</h3><i></i><b>Desde $2,000<small>sin contar la inversión en anuncios</small></b></div>
+            <p>Configuración y seguimiento en Facebook, Instagram o Google.</p>
+          </li>
+          <li>
+            <div class="m-fila"><h3>Estrategia de marca</h3><i></i><b>A cotizar</b></div>
+            <p>Para proyectos más grandes. Una persona del equipo revisa tu caso.</p>
+          </li>
+        </ul>
+        <p class="nota">Servicios y precios de ejemplo. Se sustituyen por el catálogo real de GECTAM.</p>
       </div>
-      <ul class="precios">
-        <li>
-          <div><h3>Instalación de equipos</h3><p>Instalación y puesta en marcha con revisión de funcionamiento al terminar.</p></div>
-          <div class="precio">$1,200<small>por equipo</small></div>
-        </li>
-        <li>
-          <div><h3>Mantenimiento preventivo</h3><p>Limpieza, ajustes y revisión general para evitar fallas antes de que ocurran.</p></div>
-          <div class="precio">$850<small>por equipo</small></div>
-        </li>
-        <li>
-          <div><h3>Diagnóstico y reparación</h3><p>Encontramos la falla y te damos el costo de la reparación antes de empezar.</p></div>
-          <div class="precio">Desde $600<small>el precio final depende de la falla</small></div>
-        </li>
-        <li>
-          <div><h3>Paquete anual de mantenimiento</h3><p>Cuatro visitas al año con prioridad de atención y descuento en refacciones.</p></div>
-          <div class="precio">$2,900<small>por equipo al año</small></div>
-        </li>
-        <li>
-          <div><h3>Proyectos especiales</h3><p>Instalaciones grandes o trabajos fuera de catálogo. Un especialista revisa tu caso.</p></div>
-          <div class="precio">A cotizar<small>con una persona del equipo</small></div>
-        </li>
-      </ul>
-      <p class="nota">Servicios y precios de ejemplo. Se sustituyen por el catálogo real de GECTAM.</p>
+
+      <aside class="post-it">
+        <p>¿No ves lo que buscas?</p>
+        <p>Pregúntaselo al chat. Si es algo fuera de lo normal, te pasamos con una persona.</p>
+        <button class="btn" type="button" data-open-chat>Preguntar</button>
+      </aside>
     </div>
   </section>
 
-  <section class="bloque alt" id="como-funciona">
+  <section class="bloque azul" id="como-funciona">
     <div class="wrap">
-      <div class="cab">
-        <h2>De la duda a la cotización en tres pasos</h2>
-      </div>
+      <h2>De la duda a la cotización en tres pasos</h2>
       <ol class="pasos">
-        <li><h3>Cuéntanos qué necesitas</h3><p>Escribe en el chat con tus palabras. No hay formularios largos.</p></li>
-        <li><h3>Revisa tu cotización</h3><p>El asistente suma los servicios con precios del catálogo y te muestra el total.</p></li>
-        <li><h3>Te contactamos</h3><p>Una persona de GECTAM confirma los detalles contigo y agenda el servicio.</p></li>
+        <li><span class="num">1</span><div><h3>Cuéntanos qué necesitas</h3><p>Escribe en el chat con tus palabras. No hay formularios largos.</p></div></li>
+        <li><span class="num">2</span><div><h3>Revisa tu cotización</h3><p>El asistente suma los servicios con los precios de nuestro catálogo y te muestra el total.</p></div></li>
+        <li><span class="num">3</span><div><h3>Te contactamos</h3><p>Una persona de GECTAM confirma los detalles contigo y agenda el trabajo.</p></div></li>
       </ol>
     </div>
   </section>
 
   <section class="bloque" id="nosotros">
     <div class="wrap">
-      <div class="cab">
-        <h2>Lo que puedes esperar de nosotros</h2>
-      </div>
-      <dl class="hechos">
-        <div><dt>Precios claros</dt><dd>La cotización sale de nuestro catálogo, no de una estimación al aire.</dd></div>
-        <div><dt>Respuesta a cualquier hora</dt><dd>El asistente atiende también de noche y en fin de semana.</dd></div>
-        <div><dt>Personas para lo especial</dt><dd>Los trabajos que necesitan revisión los atiende nuestro equipo.</dd></div>
-        <div><dt>Seguimiento</dt><dd>Cada cotización queda registrada para que no se pierda tu solicitud.</dd></div>
+      <h2>Lo que puedes esperar de nosotros</h2>
+      <dl class="promesas">
+        <div><dt>Precios claros.</dt><dd>La cotización sale de nuestro catálogo, no de una estimación al aire.</dd></div>
+        <div><dt>Respuesta a cualquier hora.</dt><dd>El asistente atiende también de noche y en fin de semana.</dd></div>
+        <div><dt>Personas para lo especial.</dt><dd>Lo que necesita revisión lo atiende nuestro equipo.</dd></div>
+        <div><dt>Seguimiento.</dt><dd>Cada cotización queda registrada para que no se pierda tu solicitud.</dd></div>
       </dl>
+      <p class="nota">Texto de ejemplo, se sustituye por la presentación real del equipo.</p>
     </div>
   </section>
 
   <section class="bloque" id="contacto">
     <div class="wrap contacto">
       <div>
-        <div class="cab" style="margin-bottom:28px"><h2>Contacto</h2></div>
+        <h2>Contacto</h2>
         <dl class="datos">
           <div><dt>Teléfono</dt><dd>(834) 000 0000</dd></div>
           <div><dt>Correo</dt><dd>contacto@gectam.example</dd></div>
@@ -132,7 +153,7 @@
       <div class="caja-chat">
         <h3>¿Prefieres cotizar ahora?</h3>
         <p>Abre el chat y en unos minutos tienes tu cotización.</p>
-        <button class="btn btn-senal" type="button" data-open-chat>Abrir el chat</button>
+        <button class="btn btn-tinta" type="button" data-open-chat>Abrir el chat</button>
       </div>
     </div>
   </section>

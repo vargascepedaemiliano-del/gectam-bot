@@ -7,10 +7,10 @@
 <title>Panel de administrador | GECTAM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  body{background-image:none;font-size:16px}
+  body{font-size:16px}
   .ad{max-width:1100px;margin:0 auto;padding:24px}
   .ad-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
   .ad-top h1{font-size:1.7rem}
@@ -19,22 +19,22 @@
   .tab[aria-selected="true"]{background:var(--tinta);color:#fff}
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
   .stat{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:18px}
-  .stat strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;line-height:1.1}
+  .stat strong{display:block;font-family:var(--display);font-size:2rem;line-height:1.1}
   .stat span{color:var(--texto-suave);font-size:.95rem}
   table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--linea);border-radius:12px;overflow:hidden}
   th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--linea);vertical-align:top;font-size:.95rem}
   th{background:#e9eeec;font-weight:700}
   tr.click{cursor:pointer}
-  tr.click:hover td{background:#f1f5f3}
+  tr.click:hover td{background:#e8e8f4}
   .scroll{overflow-x:auto}
-  .login{max-width:380px;margin:12vh auto;background:#fff;border:2px solid var(--tinta);border-radius:14px;padding:28px;box-shadow:8px 8px 0 var(--tinta)}
+  .login{max-width:380px;margin:12vh auto;background:#fff;border:2px solid var(--tinta);border-radius:6px;padding:28px;box-shadow:6px 6px 0 var(--tinta)}
   .login label,.f label{display:block;font-weight:600;margin:14px 0 6px}
   input[type=text],input[type=password],input[type=number],select{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--linea);border-radius:8px;background:#fff;color:var(--tinta)}
   .err{color:#b3261e;margin-top:12px;font-weight:600;min-height:1.4em}
   .hilo{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:9px;margin-top:14px}
   .m{max-width:78%;padding:9px 13px;border-radius:12px;white-space:pre-wrap;font-size:.95rem}
   .m small{display:block;color:inherit;opacity:.65;font-size:.78rem;margin-top:4px}
-  .m.cliente{align-self:flex-end;background:var(--tinta);color:#fff}
+  .m.cliente{align-self:flex-end;background:var(--azul);color:#fff}
   .m.bot{align-self:flex-start;background:var(--papel);border:1px solid var(--linea)}
   .f{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:18px;margin-bottom:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 16px;align-items:end}
   .f .acc{display:flex;gap:10px;grid-column:1/-1;margin-top:14px;flex-wrap:wrap}
@@ -44,7 +44,7 @@
   .mini:hover{background:var(--tinta);color:#fff}
   .mini.rojo{border-color:#b3261e;color:#b3261e}.mini.rojo:hover{background:#b3261e;color:#fff}
   .vacio{padding:28px;text-align:center;color:var(--texto-suave);background:#fff;border:1px dashed var(--linea);border-radius:12px}
-  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.8rem;font-weight:600;background:#e9eeec}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.8rem;font-weight:600;background:#e4e4ee}
   .pill.si{background:#d6efe0;color:#14532d}
   pre.det{margin:0;white-space:pre-wrap;font-family:inherit;font-size:.9rem;color:var(--texto-suave)}
   [hidden]{display:none!important}

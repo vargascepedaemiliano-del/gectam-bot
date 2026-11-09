@@ -12,15 +12,15 @@
 
   /* ---------- Estilos (con prefijo gc- para no chocar con la página) ---------- */
   var css = [
-    ".gc-root{--tinta:#0d2b33;--tinta2:#1b4450;--papel:#f4f6f3;--linea:#cbd5d3;--senal:#f26b1d;font-family:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;}",
+    ".gc-root{--tinta:#16164a;--tinta2:#46467a;--papel:#f0f0ea;--linea:#cfcfd8;--senal:#ff5c93;--azul:#2d4bd8;font-family:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;}",
     ".gc-root *{box-sizing:border-box}",
-    ".gc-fab{position:fixed;right:20px;bottom:20px;z-index:99998;display:flex;align-items:center;gap:10px;border:0;cursor:pointer;background:var(--senal);color:var(--tinta);font:600 15px/1 inherit;font-family:inherit;padding:14px 18px 14px 16px;border-radius:999px;box-shadow:0 6px 20px rgba(13,43,51,.28)}",
-    ".gc-fab:hover{background:#ff7d33}",
+    ".gc-fab{position:fixed;right:20px;bottom:20px;z-index:99998;display:flex;align-items:center;gap:10px;border:2px solid var(--tinta);cursor:pointer;background:var(--senal);color:var(--tinta);font:700 15px/1 inherit;font-family:inherit;padding:13px 18px 13px 16px;border-radius:999px;box-shadow:4px 4px 0 var(--tinta)}",
+    ".gc-fab:hover{background:#ff7aa6}",
     ".gc-fab:focus-visible,.gc-send:focus-visible,.gc-close:focus-visible,.gc-chip:focus-visible{outline:3px solid var(--tinta);outline-offset:2px}",
     ".gc-fab svg{width:22px;height:22px;flex:none}",
-    ".gc-panel{position:fixed;right:20px;bottom:20px;z-index:99999;width:380px;max-width:calc(100vw - 24px);height:560px;max-height:calc(100vh - 24px);display:none;flex-direction:column;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(13,43,51,.35);border:1px solid var(--linea)}",
+    ".gc-panel{position:fixed;right:20px;bottom:20px;z-index:99999;width:380px;max-width:calc(100vw - 24px);height:560px;max-height:calc(100vh - 24px);display:none;flex-direction:column;background:#fff;border-radius:14px;overflow:hidden;box-shadow:6px 6px 0 var(--tinta);border:2px solid var(--tinta)}",
     ".gc-panel.gc-open{display:flex}",
-    ".gc-head{background:var(--tinta);color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}",
+    ".gc-head{background:var(--azul);color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}",
     ".gc-title{font-weight:700;font-size:16px;line-height:1.2}",
     ".gc-sub{font-size:12.5px;opacity:.75;margin-top:2px}",
     ".gc-close{background:transparent;border:0;color:#fff;cursor:pointer;font-size:26px;line-height:1;padding:4px 8px;border-radius:8px}",
@@ -28,10 +28,10 @@
     ".gc-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:var(--papel)}",
     ".gc-msg{max-width:85%;padding:9px 13px;border-radius:14px;font-size:14.5px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}",
     ".gc-bot{background:#fff;color:var(--tinta);align-self:flex-start;border:1px solid var(--linea);border-bottom-left-radius:4px}",
-    ".gc-user{background:var(--tinta);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}",
+    ".gc-user{background:var(--azul);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}",
     ".gc-note{align-self:flex-start;font-size:12.5px;color:var(--tinta2);padding:0 4px}",
     ".gc-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}",
-    ".gc-chip{font:inherit;font-size:13.5px;background:#fff;color:var(--tinta);border:1px solid var(--tinta2);border-radius:999px;padding:7px 12px;cursor:pointer}",
+    ".gc-chip{font:inherit;font-size:13.5px;background:#fff;color:var(--tinta);border:2px solid var(--tinta);border-radius:999px;padding:6px 12px;cursor:pointer}",
     ".gc-chip:hover{background:var(--tinta);color:#fff}",
     ".gc-typing{display:inline-flex;gap:4px;padding:12px 14px}",
     ".gc-typing i{width:7px;height:7px;border-radius:50%;background:var(--tinta2);opacity:.35;animation:gc-b 1.1s infinite}",
@@ -40,7 +40,7 @@
     ".gc-form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--linea);background:#fff}",
     ".gc-input{flex:1;font:inherit;font-size:15px;border:1px solid var(--linea);border-radius:10px;padding:10px 12px;color:var(--tinta);min-width:0}",
     ".gc-input:focus{outline:2px solid var(--tinta2);border-color:transparent}",
-    ".gc-send{font:inherit;font-weight:600;font-size:14.5px;background:var(--senal);color:var(--tinta);border:0;border-radius:10px;padding:0 16px;cursor:pointer}",
+    ".gc-send{font:inherit;font-weight:600;font-size:14.5px;background:var(--senal);color:var(--tinta);border:2px solid var(--tinta);border-radius:10px;padding:0 16px;cursor:pointer}",
     ".gc-send:disabled{opacity:.5;cursor:not-allowed}",
     "@media (max-width:480px){.gc-panel{right:0;bottom:0;width:100vw;max-width:100vw;height:100vh;max-height:100vh;border-radius:0}}",
     "@media (prefers-reduced-motion:reduce){.gc-typing i{animation:none;opacity:.6}}"
@@ -96,7 +96,17 @@
   function addMsg(text, who) {
     var d = document.createElement("div");
     d.className = "gc-msg " + (who === "user" ? "gc-user" : "gc-bot");
-    d.textContent = text;
+    // Convierte **negritas** en <strong> sin usar innerHTML (seguro contra HTML inyectado)
+    String(text).split(/\*\*(.+?)\*\*/g).forEach(function (parte, i) {
+      if (!parte) return;
+      if (i % 2 === 1) {
+        var s = document.createElement("strong");
+        s.textContent = parte;
+        d.appendChild(s);
+      } else {
+        d.appendChild(document.createTextNode(parte));
+      }
+    });
     msgs.appendChild(d);
     scrollDown();
     return d;
